@@ -31,7 +31,7 @@ importScripts("scripts/sw/sw-toolbox.js","scripts/sw/runtime-caching.js");
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["index.html","a2d135fcabe1e4e6f761d7657d687175"],["scripts/main.min.js","3a5bc9756727e9bde9e795707e1b4b57"],["scripts/sw/runtime-caching.js","e3e34dcb62b5d62453b9215961585488"],["scripts/sw/sw-toolbox.js","2770efb889cc10c4de88d0b746c2a13c"],["styles/main.css","41232f5567cb2828529b1eff3d50b478"]];
+var PrecacheConfig = [["index.html","a2d135fcabe1e4e6f761d7657d687175"],["scripts/main.min.js","7f9ddc9a2ac39bf2290b9e0139a99960"],["scripts/sw/runtime-caching.js","e3e34dcb62b5d62453b9215961585488"],["scripts/sw/sw-toolbox.js","2770efb889cc10c4de88d0b746c2a13c"],["styles/main.css","41232f5567cb2828529b1eff3d50b478"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1-web-starter-kit-' + (self.registration ? self.registration.scope : '') + '-';
 
