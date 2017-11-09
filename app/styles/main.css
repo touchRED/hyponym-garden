@@ -53,8 +53,29 @@ blockquote, q {
    Styles
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono');
+
+::selection{
+  background: transparent;
+}
+
 body{
   margin: 0px;
   padding: 0px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   /*background: pink;*/
+}
+
+img{
+  max-height: 70vh;
+  min-width: 60vw;
+}
+
+p{
+  font-family: "Cutive Mono", "Courier New", monospace;
+  margin-top: 25px;
 }
