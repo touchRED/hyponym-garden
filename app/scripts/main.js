@@ -70,13 +70,6 @@ function generateGiphyFunction(type){
 */
 
 
-
-
-
-
-
-
-
 function generateWordnikLink(word, type){
   return "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords?useCanonical=false&relationshipTypes=" + type + "&limitPerRelationshipType=10&api_key=" + wordnikKey;
 }
@@ -126,7 +119,7 @@ function touchEnded(){
     }
     currentImgElement.elt.src = imgs[imgs.length - 1][imgIndex].images.downsized.url;
   }
-  return false;
+  // return false;
 }
 
 
