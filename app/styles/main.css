@@ -55,7 +55,7 @@ blockquote, q {
 
 @import url('https://fonts.googleapis.com/css?family=Cutive+Mono');
 
-::selection{
+img::selection{
   background: transparent;
 }
 
@@ -75,7 +75,11 @@ img{
   min-width: 60vw;
 }
 
-p{
+input{
   font-family: "Cutive Mono", "Courier New", monospace;
+  font-size: 28px;
+  width: auto;
+  text-align: center;
+  border: none;
   margin-top: 25px;
 }

@@ -22,8 +22,27 @@ function setup(){
   }
   loadJSON(gifUrl, function(giphy){
     currentImgElement = createImg(giphy.data[0].images.downsized.url);
-    console.log(giphy.data[0].images);
-    currentP = createP(seed);
+    currentP = createInput(seed);
+    console.log(currentP);
+    currentP.changed(function(){
+      currentP.elt.blur();
+      seed = currentP.elt.value;
+      console.log("seed:", seed);
+      gifUrl = "http://api.giphy.com/v1/gifs/search?q=" + seed + "&api_key=8lARF0cgG0lY6ZMfZ6n2GEYcoHvXg4WX";
+      imgs = [];
+      words = [];
+      imgIndex = 0;
+      loadJSON(gifUrl, function(giphy){
+        if(giphy.data){
+          currentImgElement.elt.src = giphy.data[0].images.downsized.url;
+          words.push(seed);
+          imgs.push(giphy.data)
+          generateWord(seed, "synonym");
+        }else{
+          console.log("we failed");
+        }
+      });
+    });
     words.push(seed);
     imgs.push(giphy.data)
     generateWord(seed, "synonym");
@@ -39,6 +58,24 @@ function generateGiphyFunction(type){
     }
   }
 }
+
+
+/*
+
+  TODO:
+
+  - static during loading
+
+
+*/
+
+
+
+
+
+
+
+
 
 function generateWordnikLink(word, type){
   return "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords?useCanonical=false&relationshipTypes=" + type + "&limitPerRelationshipType=10&api_key=" + wordnikKey;
@@ -65,7 +102,8 @@ function touchEnded(){
   if(winMouseX > 3 * window.innerWidth / 4){
     imgIndex = 0;
     currentImgElement.elt.src = nextImgs[0].images.downsized.url;
-    currentP.elt.innerText = nextWord;
+    // currentP.elt.innerText = nextWord;
+    currentP.elt.value = nextWord;
     imgs.push(nextImgs);
     words.push(nextWord);
     console.log(words);
@@ -77,7 +115,8 @@ function touchEnded(){
       imgIndex = 0;
     }
     currentImgElement.elt.src = imgs[imgs.length - 1][imgIndex].images.downsized.url;
-    currentP.elt.innerText = words[words.length - 1];
+    // currentP.elt.innerText = words[words.length - 1];
+    currentP.elt.value = words[words.length - 1];
     generateWord(words[words.length - 1], "synonym");
   }else{
     if(imgIndex < imgs[imgs.length - 1].length - 1){
@@ -96,7 +135,8 @@ function keyPressed(){
   if(keyCode == RIGHT_ARROW){
     imgIndex = 0;
     currentImgElement.elt.src = nextImgs[0].images.downsized.url;
-    currentP.elt.innerText = nextWord;
+    // currentP.elt.innerText = nextWord;
+    currentP.elt.value = nextWord;
     imgs.push(nextImgs);
     words.push(nextWord);
     console.log(words);
@@ -108,7 +148,8 @@ function keyPressed(){
       imgIndex = 0;
     }
     currentImgElement.elt.src = imgs[imgs.length - 1][imgIndex].images.downsized.url;
-    currentP.elt.innerText = words[words.length - 1];
+    // currentP.elt.innerText = words[words.length - 1];
+    currentP.elt.value = words[words.length - 1];
     generateWord(words[words.length - 1], "synonym");
   }else if(keyCode == UP_ARROW){
     console.log("up");
@@ -121,8 +162,10 @@ function keyPressed(){
       imgIndex = 0;
     }
     currentImgElement.elt.src = imgs[imgs.length - 1][imgIndex].images.downsized.url;
+  }else{
+    console.log(keyCode);
   }
-  return false;
+  // return false;
 }
 
 // function generateWord("synonym"){
