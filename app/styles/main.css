@@ -67,6 +67,7 @@ body{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: "Cutive Mono", "Courier New", monospace;
   /*background: pink;*/
 }
 
@@ -82,4 +83,45 @@ input{
   text-align: center;
   border: none;
   margin-top: 25px;
+}
+
+#help{
+  position: absolute;
+  background: white;
+  width: 50vw;
+  text-align: center;
+  padding: 30px;
+  display: none;
+}
+
+#help h1{
+  font-size: 24px;
+
+}
+
+#help p{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+i.fa{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 40px;
+  color: #999;
+  cursor: pointer;
+}
+
+@media(max-width: 500px){
+  #help{
+    width: 90vw;
+    padding: 30px;
+  }
+  #help h1{
+    font-size: 20px;
+  }
+  #help p{
+    font-size: 12px;
+  }
 }
